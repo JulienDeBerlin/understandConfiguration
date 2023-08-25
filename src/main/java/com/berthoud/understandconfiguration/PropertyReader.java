@@ -3,10 +3,12 @@ package com.berthoud.understandconfiguration;
 import java.util.List;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
 @Data
+@PropertySource("/additionnalProperties.properties")
 public class PropertyReader {
 
   @Value("${last.holidays.location:Istanbul}")
@@ -21,5 +23,7 @@ public class PropertyReader {
   @Value("${countries.visited}")
   private List<String> visitedCountries;
 
+  @Value("${car}")
+  private String car;
 
 }

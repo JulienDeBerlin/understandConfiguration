@@ -4,7 +4,7 @@ last.holidays:
   verdict: great
 
 countries:
-    visited: Argentina, Brazil, Italy, Spain
+  visited: Argentina, Brazil, Italy, Spain
 
 
 app:
@@ -19,3 +19,6 @@ app:
     timeout: 5
     output-folder: /temp/
   error: /error/
+
+#this has no effect because JAVA_HOME is also an environment variable that tales precedence on the property defined here
+JAVA_HOME: blablabla

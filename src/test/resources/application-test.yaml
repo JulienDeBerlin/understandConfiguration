@@ -1,0 +1,7 @@
+last.holidays:
+  location: Spain
+  year: 2023
+  verdict: ok
+
+#this has no effect because JAVA_HOME is also an environment variable that tales precedence on the property defined here
+JAVA_HOME: blublu

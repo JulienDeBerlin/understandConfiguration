@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.hasItem;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import com.berthoud.understandconfiguration.AppProperties.Menu;
 import lombok.SneakyThrows;
@@ -12,9 +13,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 
-
+//@ActiveProfiles("test") //with this line we could use the properties contained in application-test.yaml (in addition to application.yaml)
 @SpringBootTest
+//@SpringBootTest (properties = {"JAVA_HOME=koko"}) // here we could override the property JAVA_HOME
+  @TestPropertySource(locations = "/otherConfig.properties")
 class PropertyReaderTest {
 
   @Autowired
@@ -103,5 +108,14 @@ class PropertyReaderTest {
 
   }
 
+  @Test
+  @DisplayName("load additionnal property with PropertySource")
+  @SneakyThrows
+  void loadAdditionnalPropertyWithPropertySource() {
+    // Preparation
+
+    // Execution
+   assertEquals("Audi", underTest.getCar());
+  }
 
 }
